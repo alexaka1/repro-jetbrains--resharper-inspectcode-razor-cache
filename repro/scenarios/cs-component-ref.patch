@@ -1,0 +1,42 @@
+diff --git a/RazorCacheRepro.Client/Components/Notice.cs b/RazorCacheRepro.Client/Components/Notice.cs
+new file mode 100644
+index 0000000..bb8fe3d
+--- /dev/null
++++ b/RazorCacheRepro.Client/Components/Notice.cs
+@@ -0,0 +1,17 @@
++using Microsoft.AspNetCore.Components;
++using Microsoft.AspNetCore.Components.Rendering;
++
++namespace RazorCacheRepro.Client.Components;
++
++public sealed class Notice : ComponentBase
++{
++    [Parameter]
++    public string? Text { get; set; }
++
++    protected override void BuildRenderTree(RenderTreeBuilder builder)
++    {
++        builder.OpenElement(0, "p");
++        builder.AddContent(1, Text);
++        builder.CloseElement();
++    }
++}
+diff --git a/RazorCacheRepro.Client/Pages/Overview.razor b/RazorCacheRepro.Client/Pages/Overview.razor
+index b0b727b..39c623b 100644
+--- a/RazorCacheRepro.Client/Pages/Overview.razor
++++ b/RazorCacheRepro.Client/Pages/Overview.razor
+@@ -4,3 +4,14 @@
+ <InfoPanel Title="Overview">
+     <p>An existing page.</p>
+ </InfoPanel>
++
++<Notice @ref="_notice" Text="Added in the next commit."/>
++
++@if (_notice is null)
++{
++    <p>Not rendered yet.</p>
++}
++
++@code {
++    private Notice? _notice;
++}

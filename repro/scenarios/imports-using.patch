@@ -1,0 +1,9 @@
+diff --git a/RazorCacheRepro.Client/_Imports.razor b/RazorCacheRepro.Client/_Imports.razor
+index 8824fb2..8c31528 100644
+--- a/RazorCacheRepro.Client/_Imports.razor
++++ b/RazorCacheRepro.Client/_Imports.razor
+@@ -7,3 +7,4 @@
+ @using Microsoft.AspNetCore.Components.Web.Virtualization
+ @using Microsoft.JSInterop
+ @using RazorCacheRepro.Client
++@using RazorCacheRepro.Client.Components

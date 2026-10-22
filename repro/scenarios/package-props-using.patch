@@ -1,0 +1,12 @@
+diff --git a/Directory.Packages.props b/Directory.Packages.props
+index d53fbc5..f260a53 100644
+--- a/Directory.Packages.props
++++ b/Directory.Packages.props
+@@ -6,6 +6,6 @@
+     <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.13" />
+     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.13" />
+     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.13" />
+-    <PackageVersion Include="RazorCacheRepro.Widgets" Version="1.0.0" />
++    <PackageVersion Include="RazorCacheRepro.Widgets" Version="1.1.0" />
+   </ItemGroup>
+ </Project>

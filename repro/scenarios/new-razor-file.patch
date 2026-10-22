@@ -1,0 +1,19 @@
+diff --git a/RazorCacheRepro.Client/Pages/NewPage.razor b/RazorCacheRepro.Client/Pages/NewPage.razor
+new file mode 100644
+index 0000000..50db141
+--- /dev/null
++++ b/RazorCacheRepro.Client/Pages/NewPage.razor
+@@ -0,0 +1,13 @@
++@page "/new-page"
++@using RazorCacheRepro.Client.Components
++
++<InfoPanel @ref="_panel" Title="New page"/>
++
++@if (_panel is null)
++{
++    <p>Not rendered yet.</p>
++}
++
++@code {
++    private InfoPanel? _panel;
++}

@@ -1,0 +1,11 @@
+diff --git a/Directory.Build.props b/Directory.Build.props
+index c07ad08..4c5acf5 100644
+--- a/Directory.Build.props
++++ b/Directory.Build.props
+@@ -1,3 +1,5 @@
+ <Project>
+-  <!-- Empty in state A. The scenarios analysis-mode, global-using and global-using-dropped change it. -->
++  <ItemGroup Condition="'$(MSBuildProjectName)' == 'RazorCacheRepro.Client'">
++    <Using Include="RazorCacheRepro.Api" />
++  </ItemGroup>
+ </Project>

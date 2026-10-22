@@ -1,0 +1,46 @@
+diff --git a/RazorCacheRepro.Client/Pages/Overview.razor b/RazorCacheRepro.Client/Pages/Overview.razor
+index b0b727b..ed753ea 100644
+--- a/RazorCacheRepro.Client/Pages/Overview.razor
++++ b/RazorCacheRepro.Client/Pages/Overview.razor
+@@ -1,6 +1,18 @@
+ @page "/overview"
+ @using RazorCacheRepro.Client.Components
++@using RazorCacheRepro.Components
+ 
+ <InfoPanel Title="Overview">
+     <p>An existing page.</p>
+ </InfoPanel>
++
++<Callout @ref="_callout" Text="Added in the next commit."/>
++
++@if (_callout is null)
++{
++    <p>Not rendered yet.</p>
++}
++
++@code {
++    private Callout? _callout;
++}
+diff --git a/RazorCacheRepro.Components/Callout.cs b/RazorCacheRepro.Components/Callout.cs
+new file mode 100644
+index 0000000..f1e56b0
+--- /dev/null
++++ b/RazorCacheRepro.Components/Callout.cs
+@@ -0,0 +1,17 @@
++using Microsoft.AspNetCore.Components;
++using Microsoft.AspNetCore.Components.Rendering;
++
++namespace RazorCacheRepro.Components;
++
++public sealed class Callout : ComponentBase
++{
++    [Parameter]
++    public string? Text { get; set; }
++
++    protected override void BuildRenderTree(RenderTreeBuilder builder)
++    {
++        builder.OpenElement(0, "aside");
++        builder.AddContent(1, Text);
++        builder.CloseElement();
++    }
++}

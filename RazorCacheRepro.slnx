@@ -1,0 +1,11 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RazorCacheRepro.Client/RazorCacheRepro.Client.csproj" />
+  <Project Path="RazorCacheRepro.Components/RazorCacheRepro.Components.csproj" />
+  <Project Path="RazorCacheRepro.Api/RazorCacheRepro.Api.csproj" />
+  <Project Path="RazorCacheRepro/RazorCacheRepro.csproj" />
+</Solution>

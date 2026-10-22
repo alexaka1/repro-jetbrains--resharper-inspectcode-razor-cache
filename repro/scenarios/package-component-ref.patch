@@ -1,0 +1,52 @@
+diff --git a/Directory.Packages.props b/Directory.Packages.props
+index d53fbc5..4c6a260 100644
+--- a/Directory.Packages.props
++++ b/Directory.Packages.props
+@@ -3,6 +3,7 @@
+     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+   </PropertyGroup>
+   <ItemGroup>
++    <PackageVersion Include="Microsoft.AspNetCore.Components.QuickGrid" Version="10.0.13" />
+     <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.13" />
+     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.13" />
+     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.13" />
+diff --git a/RazorCacheRepro.Client/Pages/Overview.razor b/RazorCacheRepro.Client/Pages/Overview.razor
+index b0b727b..7b6f304 100644
+--- a/RazorCacheRepro.Client/Pages/Overview.razor
++++ b/RazorCacheRepro.Client/Pages/Overview.razor
+@@ -1,6 +1,23 @@
+ @page "/overview"
+ @using RazorCacheRepro.Client.Components
++@using Microsoft.AspNetCore.Components.QuickGrid
+ 
+ <InfoPanel Title="Overview">
+     <p>An existing page.</p>
+ </InfoPanel>
++
++<QuickGrid @ref="_grid" Items="_rows">
++    <PropertyColumn Property="row => row.Name"/>
++</QuickGrid>
++
++@if (_grid is null)
++{
++    <p>Not rendered yet.</p>
++}
++
++@code {
++    private readonly IQueryable<Row> _rows = new[] { new Row("First"), new Row("Second") }.AsQueryable();
++    private QuickGrid<Row>? _grid;
++
++    private sealed record Row(string Name);
++}
+diff --git a/RazorCacheRepro.Client/RazorCacheRepro.Client.csproj b/RazorCacheRepro.Client/RazorCacheRepro.Client.csproj
+index 0cd6940..ff0e130 100644
+--- a/RazorCacheRepro.Client/RazorCacheRepro.Client.csproj
++++ b/RazorCacheRepro.Client/RazorCacheRepro.Client.csproj
+@@ -10,6 +10,7 @@
+   </PropertyGroup>
+ 
+   <ItemGroup>
++    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" />
+     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
+     <PackageReference Include="RazorCacheRepro.Widgets" />
+   </ItemGroup>
